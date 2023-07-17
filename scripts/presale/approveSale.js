@@ -2,17 +2,22 @@ const { ethers } = require("hardhat");
 const fs = require("fs");
 require("dotenv").config();
 
-// An example of a deploy script that will deploy and call a simple contract.
 async function main() {
     [deployer] = await ethers.getSigners();
 
     console.log(`Deploying contracts with the account: ${deployer.address}`);
     console.log(`Balance: ${(await deployer.getBalance()).toString()}`);
 
-    const Token = await ethers.getContractFactory("UniswapV2Factory");
-    token = await Token.deploy(name, symbol, decimal)
+    const ERC20TestToken = await ethers.getContractFactory("ERC20TestToken");
+    token = await ERC20TestToken.attach("0x989b5386E31415A88eCbcEcDd7c8f4cCBEbDf2a7")
+    await token.deployed()
 
-    console.log("Deployed to:", token.address);
+    var tx = await token.approve(
+        process.env.CONTROLLER_ADDRESS_TESTNET,
+        "1000000000000000000000000"
+    )
+
+    console.log("Done");
 }
 
 main()

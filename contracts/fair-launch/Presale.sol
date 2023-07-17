@@ -3,6 +3,7 @@ pragma solidity ^0.8.0;
 
 import "./interfaces/IERC20.sol";
 import "./interfaces/IController.sol";
+import "./interfaces/IPresale.sol";
 import "./utils/Ownable.sol";
 import "./libraries/SafeMath.sol";
 import "../v2-periphery/interfaces/IUniswapV2Router01.sol";
@@ -31,7 +32,7 @@ abstract contract ReentrancyGuard {
     }
 }
 
-contract Presale is Ownable, ReentrancyGuard {
+contract Presale is Ownable, ReentrancyGuard, IPresale {
     using SafeMath for uint256;
 
     IERC20 public token;

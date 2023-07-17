@@ -8,14 +8,22 @@ async function main() {
     console.log(`Deploying contracts with the account: ${deployer.address}`);
     console.log(`Balance: ${(await deployer.getBalance()).toString()}`);
 
-    const name = "TestToken1";
-    const symbol = "TT1";
-    const decimal = 18;
+    const name = "TestToken1"
+    const symbol = "TT1"
+    const decimal = 18
+    const inital_supply = ethers.utils.parseEther("1").toString()
 
-    const Token = await ethers.getContractFactory("ERC20TestToken");
-    token = await Token.deploy(name, symbol, decimal)
+    const ERC20TestToken = await ethers.getContractFactory("ERC20TestToken");
+    token = await ERC20TestToken.deploy(
+        name,
+        symbol,
+        decimal,
+        inital_supply
+    )
+    await token.deployed()
+    console.log("Token Deployed to: ", token.address);
 
-    console.log("Deployed to:", token.address);
+    console.log("Done");
 }
 
 main()
