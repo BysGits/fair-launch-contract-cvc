@@ -12,7 +12,7 @@ async function main() {
     controller = await Controller.attach(process.env.CONTROLLER_ADDRESS_TESTNET)
     await controller.deployed()
 
-    var tx = await controller.launchAddress("0x11")
+    var tx = await controller.launchAddress("0x13")
     console.log(tx);
 
     console.log("Done");

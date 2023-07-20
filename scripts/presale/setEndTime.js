@@ -14,13 +14,13 @@ async function main() {
     console.log(`Balance: ${(await deployer.getBalance()).toString()}`);
 
     const Sale = await ethers.getContractFactory("Presale");
-    sale = await Sale.attach("0xc89E6024383354fDc23E1B7d94928E6787E640c8")
+    sale = await Sale.attach("0x58c0Ba2d42125dD41D0294E84844BA7902F73E40")
     await sale.deployed()
 
     var endTime = await getCurrentTime(sale) + 1000000
 
     var tx = await sale.setEndTime(endTime)
-    console.log(tx);
+    await tx.wait()
 
     console.log("Done");
 }

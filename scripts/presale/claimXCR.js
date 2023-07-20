@@ -12,7 +12,7 @@ async function main() {
     sale = await Sale.attach("0x58c0Ba2d42125dD41D0294E84844BA7902F73E40")
     await sale.deployed()
 
-    var tx = await sale.buy({value: ethers.utils.parseEther("0.01").toString()})
+    var tx = await sale.claimXCR()
     await tx.wait()
 
     console.log("Done");

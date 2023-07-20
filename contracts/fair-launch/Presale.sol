@@ -189,7 +189,7 @@ contract Presale is Ownable, ReentrancyGuard, IPresale {
 
     function setEndTime(uint256 _end) public onlyOwner {
         require(start < _end, "Pre-Sale: start time must be before end time");
-        require(_end > block.timestamp, "Pre-Sale: end time must be after current time");
+        require(_end >= block.timestamp, "Pre-Sale: end time must be after current time");
         end = _end;
     }
 

@@ -22,6 +22,8 @@ async function main() {
 
     console.log(startTime);
 
+    var tokenAddress = "0x989b5386E31415A88eCbcEcDd7c8f4cCBEbDf2a7"
+
     var data = [
         18, 
         "1000000000000000000000000", 
@@ -32,11 +34,22 @@ async function main() {
         "1000000000000000",
         "10000"
     ]
-    var addr = ["0x989b5386E31415A88eCbcEcDd7c8f4cCBEbDf2a7", process.env.CONTROLLER_ADDRESS_TESTNET]
+    var addr = [tokenAddress, process.env.CONTROLLER_ADDRESS_TESTNET]
     var bool = [false]
-    var str = ["0x12"]
+    var str = ["0x13"]
 
-    var tx = await controller.createSale(
+    // const ERC20TestToken = await ethers.getContractFactory("ERC20TestToken");
+    // var token = await ERC20TestToken.attach(tokenAddress)
+    // await token.deployed()
+
+    // var tx = await token.approve(
+    //     process.env.CONTROLLER_ADDRESS_TESTNET,
+    //     data[1]
+    // )
+
+    // await tx.wait()
+
+    tx = await controller.createSale(
         data,
         addr,
         bool,

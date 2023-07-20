@@ -17,6 +17,8 @@ async function main() {
         "1000000000000000000000000"
     )
 
+    await tx.wait()
+
     console.log("Done");
 }
 
