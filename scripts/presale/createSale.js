@@ -18,7 +18,7 @@ async function main() {
     await controller.deployed()
 
     var startTime = await getCurrentTime(controller) + 100
-    var endTime = startTime + 1000
+    var endTime = startTime + 10000000
 
     console.log(startTime);
 
@@ -34,7 +34,7 @@ async function main() {
     ]
     var addr = ["0x989b5386E31415A88eCbcEcDd7c8f4cCBEbDf2a7", process.env.CONTROLLER_ADDRESS_TESTNET]
     var bool = [false]
-    var str = ["0x11"]
+    var str = ["0x12"]
 
     var tx = await controller.createSale(
         data,

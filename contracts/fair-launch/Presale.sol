@@ -145,10 +145,6 @@ contract Presale is Ownable, ReentrancyGuard, IPresale {
                 .div(10 ** 18);
     }
 
-    function checkContribution(address addr) public view returns (uint256) {
-        return contributions[addr];
-    }
-
     function enableWhitelist(bool _state) public onlyOwner {
         hasWhitelist = _state;
     }
@@ -193,7 +189,7 @@ contract Presale is Ownable, ReentrancyGuard, IPresale {
 
     function setEndTime(uint256 _end) public onlyOwner {
         require(start < _end, "Pre-Sale: start time must be before end time");
-        require(end > block.timestamp, "Pre-Sale: end time must be after current time");
+        require(_end > block.timestamp, "Pre-Sale: end time must be after current time");
         end = _end;
     }
 
